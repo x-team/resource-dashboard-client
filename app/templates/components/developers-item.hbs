@@ -1,0 +1,25 @@
+<h3 class="list-group-item-heading">{{model.name}}</h3>
+<div class="list-group-item-text">
+  <ul>
+    <li>
+      <strong>Skills:</strong>
+      {{array-to-string model.skills}}
+    </li>
+    <li>
+      <strong>Available:</strong>
+      No
+    </li>
+    <li>
+      <strong>Rate:</strong>
+      ${{model.rate}}
+    </li>
+    <li>
+      <strong>Location:</strong>
+      {{model.location}}
+    </li>
+    <li>
+      <strong>Timezone:</strong>
+      {{model.timezone}}
+    </li>
+  </ul>
+</div>

@@ -11,9 +11,5 @@
     <time>{{model.createdAt}}</time>
   {{/if}}
 
-  <ul>
-    {{#each model.skills as |skill|}}
-      <li>{{skill}}</li>
-    {{/each}}
-  </ul>
+  <em>{{array-to-string model.skills}}</em>
 </div>

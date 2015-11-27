@@ -3,4 +3,7 @@
   {{#each entries as |entry|}}
     {{summary-item model=entry type=type}}
   {{/each}}
+  <li class="list-group-item">
+    {{#link-to redirect}}More ⪢{{/link-to}}
+  </li>
 </ul>
