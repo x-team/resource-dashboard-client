@@ -1,18 +1,19 @@
-<h3>{{model.name}}</h3>
+<h3 class="list-group-item-heading">{{model.name}}</h3>
+<div class="list-group-item-text">
+  {{#if isOpportunityType}}
+    <time>
+      {{model.dateFrom}}
+      {{#if model.dateTo}}- {{model.dateTo}}{{/if}}
+    </time>
+  {{/if}}
 
-{{#if isOpportunityType}}
-  <time>
-    {{model.dateFrom}}
-    {{#if model.dateTo}}- {{model.dateTo}}{{/if}}
-  </time>
-{{/if}}
+  {{#if isDeveloperType}}
+    <time>{{model.createdAt}}</time>
+  {{/if}}
 
-{{#if isDeveloperType}}
-  <time>{{model.createdAt}}</time>
-{{/if}}
-
-<ul>
-  {{#each model.skills as |skill|}}
-    <li>{{skill}}</li>
-  {{/each}}
-</ul>
+  <ul>
+    {{#each model.skills as |skill|}}
+      <li>{{skill}}</li>
+    {{/each}}
+  </ul>
+</div>

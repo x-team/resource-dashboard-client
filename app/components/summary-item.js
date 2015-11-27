@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: ['summary-item, list-group-item'],
+
   isOpportunityType: Ember.computed('type', function () {
     return this.get('type') === 'opportunity';
   }),

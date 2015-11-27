@@ -1,12 +1,9 @@
-<div class="graph">
-  Fancy graph will go here
+<div class="summary-graph">
+  <img src="http://www.chartholdr.io/line/1200/300">
 </div>
 
-<div class="summary">
-  <div class="summary-block">
-    {{summary-list title="Opportunities" entries=opportunities type='opportunity'}}
-  </div>
-  <div class="summary-block">
-    {{summary-list title="Developers" entries=developers type='developer'}}
-  </div>
+<div class="summary-lists">
+  {{summary-list title="Opportunities" entries=opportunities type='opportunity'}}
+  {{summary-list title="Newest Developers" entries=developers type='developer'}}
+  {{summary-list title="Available Soon Developers" entries=developers type='developer'}}
 </div>

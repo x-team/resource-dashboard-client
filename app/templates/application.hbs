@@ -1,25 +1,38 @@
-<header>
-  <h1>Resource Dashboard</h1>
-  <nav>
-    <ul>
-      <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
-      <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
-      <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
-    </ul>
-  </nav>
-</header>
+<div class="container-fluid layout-header main-header">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <span class="navbar-brand">Resource Dashboad</span>
+      </div>
 
-<div class="container">
-  {{outlet}}
+      <ul class="nav navbar-nav">
+        <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
+        <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
+        <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
+      </ul>
+
+      {{#link-to "login" class="btn btn-default navbar-btn navbar-right login-button"}}Login{{/link-to}}
+    </div>
+  </nav>
 </div>
 
-<footer>
-  <nav>
-    <ul>
-      <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
-      <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
-      <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
-      <li><a href="https://workable.com/" target="_blank">Workable</a></li>
-    </ul>
-  </nav>
-</footer>
+<div class="layout-wrapper">
+  <div class="layout-content">
+    <div class="container-fluid main-content">
+      {{outlet}}
+    </div>
+  </div>
+
+  <div class="layout-footer">
+    <div class="container-fluid  main-footer">
+      <nav>
+        <ul>
+          <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
+          <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
+          <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
+          <li><a href="https://workable.com/" target="_blank">Workable</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
