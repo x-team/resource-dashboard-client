@@ -6,6 +6,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('developers');
+  this.route('opportunities');
 });
 
 export default Router;

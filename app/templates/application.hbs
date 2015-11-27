@@ -1,3 +1,25 @@
-<h2 id="title">Welcome to Ember</h2>
+<header>
+  <h1>Resource Dashboard</h1>
+  <nav>
+    <ul>
+      <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
+      <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
+      <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
+    </ul>
+  </nav>
+</header>
 
-{{outlet}}
+<div class="container">
+  {{outlet}}
+</div>
+
+<footer>
+  <nav>
+    <ul>
+      <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
+      <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
+      <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
+      <li><a href="https://workable.com/" target="_blank">Workable</a></li>
+    </ul>
+  </nav>
+</footer>
