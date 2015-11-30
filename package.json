@@ -1,7 +1,7 @@
 {
-  "name": "resource-dashboard",
+  "name": "resource-dashboard-client",
   "version": "0.0.0",
-  "description": "Small description for resource-dashboard goes here",
+  "description": "Small description for resource-dashboard-client goes here",
   "private": true,
   "directories": {
     "doc": "doc",

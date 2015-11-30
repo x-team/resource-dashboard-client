@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'resource-dashboard',
+    modulePrefix: 'resource-dashboard-client',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
