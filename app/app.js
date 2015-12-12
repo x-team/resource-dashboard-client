@@ -21,23 +21,4 @@ Ember.LinkComponent.reopen({
 
 loadInitializers(App, config.modulePrefix);
 
-// Fixtures setup
-import Pretender from 'pretender';
-import opportunitiesFixtures from './fixtures/opportunities';
-import developersFixtures from './fixtures/developers';
-
-new Pretender(function() {
-  this.get('/api/opportunities', () => {
-    return [200, {
-      'Content-Type': 'application/json'
-    }, opportunitiesFixtures];
-  });
-
-  this.get('/api/developers', () => {
-    return [200, {
-      'Content-Type': 'application/json'
-    }, developersFixtures];
-  });
-});
-
 export default App;

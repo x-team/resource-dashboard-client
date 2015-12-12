@@ -8,9 +8,6 @@ module.exports = function(defaults) {
       paths: [
         'bower_components/bootstrap/less'
       ]
-    },
-    pretender: {
-      enabled: true
     }
   });
 
