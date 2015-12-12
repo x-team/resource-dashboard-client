@@ -5,13 +5,13 @@
         {{#link-to "index" class="navbar-brand"}}Resource Dashboad{{/link-to}}
       </div>
 
-      <ul class="nav navbar-nav">
-        <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
-        <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
-        <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
+      <ul class="nav navbar-nav" data-test="main-header-navigation">
+        <li>{{#link-to "index" data-test="main-header-navigation-index"}}Dashboard{{/link-to}}</li>
+        <li>{{#link-to "developers" data-test="main-header-navigation-developers"}}Developers{{/link-to}}</li>
+        <li>{{#link-to "opportunities" data-test="main-header-navigation-opportunities"}}Opportunities{{/link-to}}</li>
       </ul>
 
-      {{#link-to "login" class="btn btn-default navbar-btn navbar-right login-button"}}Login{{/link-to}}
+      {{#link-to "login" class="btn btn-default navbar-btn navbar-right login-button" data-test="main-header-login"}}Login{{/link-to}}
     </div>
   </nav>
 </div>
@@ -26,11 +26,11 @@
   <div class="layout-footer">
     <div class="container-fluid  main-footer">
       <nav>
-        <ul>
-          <li>{{#link-to "index"}}Dashboard{{/link-to}}</li>
-          <li>{{#link-to "developers"}}Developers{{/link-to}}</li>
-          <li>{{#link-to "opportunities"}}Opportunities{{/link-to}}</li>
-          <li><a href="https://workable.com/" target="_blank">Workable</a></li>
+        <ul data-test="main-footer-navigation">
+          <li>{{#link-to "index" data-test="main-footer-navigation-index"}}Dashboard{{/link-to}}</li>
+          <li>{{#link-to "developers" data-test="main-footer-navigation-developers"}}Developers{{/link-to}}</li>
+          <li>{{#link-to "opportunities" data-test="main-footer-navigation-opportunities"}}Opportunities{{/link-to}}</li>
+          <li><a href="https://workable.com/" target="_blank" data-test="main-footer-navigation-workable">Workable</a></li>
         </ul>
       </nav>
     </div>

@@ -1,9 +1,9 @@
-<h2>{{title}}</h2>
+<h2 data-test="summary-list-title">{{title}}</h2>
 <ul class="list-group">
   {{#each entries as |entry|}}
     {{summary-list-item model=entry type=type}}
   {{/each}}
   <li class="list-group-item">
-    {{#link-to redirect}}More ⪢{{/link-to}}
+    {{#link-to redirect data-test="summary-list-more"}}More ⪢{{/link-to}}
   </li>
 </ul>

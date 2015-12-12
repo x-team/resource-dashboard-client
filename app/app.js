@@ -13,6 +13,12 @@ App = Ember.Application.extend({
   Resolver
 });
 
+// Allow data-test attribute usage in {{link-to}} elements
+// It helps you to create hook for integration tests
+Ember.LinkComponent.reopen({
+  attributeBindings: ['data-test']
+});
+
 loadInitializers(App, config.modulePrefix);
 
 // Fixtures setup
