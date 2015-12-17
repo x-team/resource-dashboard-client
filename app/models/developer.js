@@ -1,6 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  available: DS.attr('boolean'),
+  availableDate: DS.attr('date'),
   name: DS.attr('string'),
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
@@ -8,9 +10,9 @@ export default DS.Model.extend({
   updatedAt: DS.attr('date'),
   profileUrl: DS.attr('string'),
   imageUrl: DS.attr('string'),
-  skills: DS.attr(),
+  address: DS.attr('string'),
   location: DS.attr('string'),
   timezone: DS.attr('string'),
   rate: DS.attr('string'),
-  nextAvailable: DS.attr('date')
+  skills: DS.hasMany('skill')
 });

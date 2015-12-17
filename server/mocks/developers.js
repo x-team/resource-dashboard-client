@@ -10,6 +10,8 @@ module.exports = function(app) {
           "type": "developer",
           "id": `${id}`,
           "attributes": {
+            "available": true,
+            "availableDate": new Date(),
             "name": "Kamil Ogórek",
             "first-name": "Kamil",
             "last-name": "Ogórek",
@@ -17,11 +19,11 @@ module.exports = function(app) {
             "updated-at": new Date(),
             "profile-url": "https://github.com/kamilogorek/",
             "image-url": "https://avatars2.githubusercontent.com/u/1523305?v=3&s=460",
-            "skills": ["JavaScript", "Node.js"],
-            "location": "Kraków, PL",
+            "address": "Kraków, PL",
+            "location": "39.5500507,-105.7820674",
             "timezone": "Europe/Warsaw",
             "rate": 128,
-            "next-available": new Date()
+            "skills": ["JavaScript", "Node.js"]
           }
         };
       })
