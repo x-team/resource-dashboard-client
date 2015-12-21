@@ -6,6 +6,8 @@
   {{developers-list developers=developers}}
 </div>
 
-<div class="developers-pagination">
-  Developers pagination goes here
-</div>
+{{pagination-bar
+  page=selectedPage
+  totalItemsCount=51
+  onSelect=(action 'selectPage')
+}}

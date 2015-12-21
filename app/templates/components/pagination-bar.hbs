@@ -1,0 +1,33 @@
+<p>
+  <em>Showing {{firstItemShownIndex}}—{{lastItemShownIndex}} of {{totalItemsCount}} entries</em>
+</p>
+
+{{#if showPagination}}
+  <ul class="pagination">
+
+    <li class="{{unless hasPrevious 'disabled'}}">
+      <a {{action "goToPreviousPage"}} aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    {{#if showBeforeEllipsis}}
+      {{pagination-bar-page page=1 currentPage=page action=(action 'goToPage')}}
+      <li class="disabled"><a>&hellip;</a></li>
+    {{/if}}
+    {{#each visiblePages as |pageNumber|}}
+      {{pagination-bar-page page=pageNumber currentPage=page action=(action 'goToPage')}}
+    {{/each}}
+    {{#if showAfterEllipsis}}
+      <li class="disabled"><a>&hellip;</a></li>
+      {{pagination-bar-page page=lastPage currentPage=page action=(action 'goToPage')}}
+    {{/if}}
+
+    <li class="{{unless hasNext 'disabled'}}">
+      <a {{action "goToNextPage"}} aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+
+{{/if}}
