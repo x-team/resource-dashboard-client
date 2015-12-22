@@ -3,6 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
   itemsPerPage: 10,
+
+  //if number of pages is more than max, ellipsis will be shown (prevent huge pagination)
+  maxPagesShown: 5,
+
   showPagination: Ember.computed.gt('totalPagesCount', 1),
   lastPage: Ember.computed.alias('totalPagesCount'),
 
@@ -26,31 +30,31 @@ export default Ember.Component.extend({
    * @property visiblepages
    * @type Array an array of visible pages
    */
-  visiblePages: Ember.computed('page', 'totalPagesCount', function() {
+  visiblePages: Ember.computed('page', 'totalPagesCount', 'maxPagesShown', function() {
     var totalPagesCount = this.get('totalPagesCount'),
-        page = this.get('page');
+        page = this.get('page'),
+        maxPagesShown = this.get('maxPagesShown');
 
     //helper function to populate the last page to be shown
-    var finish = function(start, limit) {
-      return start + limit - 1;
+    var finish = function(start, end) {
+      return start + end - 1;
     };
 
-    var limit = 5;
-    if (totalPagesCount< 5) {
-      limit = totalPagesCount;
+    if (totalPagesCount < maxPagesShown) {
+      maxPagesShown = totalPagesCount;
     }
 
-    var start = page - parseInt(limit / 2, 10);
+    var start = page - parseInt(maxPagesShown / 2, 10);
 
-    if (finish(start, limit) > totalPagesCount) {
-      start = totalPagesCount-limit + 1;
+    if (finish(start, maxPagesShown ) > totalPagesCount) {
+      start = totalPagesCount-maxPagesShown + 1;
     }
 
     if (start < 1) {
       start = 1;
     }
 
-    var finishPage = finish(start, limit);
+    var finishPage = finish(start, maxPagesShown);
 
     //return array from start to finishPage
     var result = [];

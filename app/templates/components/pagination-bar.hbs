@@ -1,11 +1,13 @@
-<p>
-  <em>Showing {{firstItemShownIndex}}—{{lastItemShownIndex}} of {{totalItemsCount}} entries</em>
-</p>
+{{#if hideDetails}}
+  <p data-test="pagination-details">
+    <em>Showing {{firstItemShownIndex}}—{{lastItemShownIndex}} of {{totalItemsCount}} entries</em>
+  </p>
+{{/if}}
 
 {{#if showPagination}}
   <ul class="pagination">
 
-    <li class="{{unless hasPrevious 'disabled'}}">
+    <li data-test="pagination-prev" class="{{unless hasPrevious 'disabled'}}">
       <a {{action "goToPreviousPage"}} aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
@@ -13,17 +15,17 @@
 
     {{#if showBeforeEllipsis}}
       {{pagination-bar-page page=1 currentPage=page action=(action 'goToPage')}}
-      <li class="disabled"><a>&hellip;</a></li>
+      <li data-test="pagination-ellipsis" class="disabled"><a>&hellip;</a></li>
     {{/if}}
     {{#each visiblePages as |pageNumber|}}
       {{pagination-bar-page page=pageNumber currentPage=page action=(action 'goToPage')}}
     {{/each}}
     {{#if showAfterEllipsis}}
-      <li class="disabled"><a>&hellip;</a></li>
+      <li data-test="pagination-ellipsis" class="disabled"><a>&hellip;</a></li>
       {{pagination-bar-page page=lastPage currentPage=page action=(action 'goToPage')}}
     {{/if}}
 
-    <li class="{{unless hasNext 'disabled'}}">
+    <li data-test="pagination-next" class="{{unless hasNext 'disabled'}}">
       <a {{action "goToNextPage"}} aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>

@@ -5,21 +5,20 @@ moduleForComponent('pagination-bar-page', 'Integration | Component | pagination 
   integration: true
 });
 
-test('it renders', function(assert) {
-  
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+test('will have class of active if currentPage equals to page', function(assert) {
+  this.render(hbs`{{pagination-bar-page page=2 currentPage=2 }}`);
+  assert.ok(this.$().find('li').hasClass('active'));
+});
 
-  this.render(hbs`{{pagination-bar-page}}`);
+test('will not have class of active if currentPage is not equal to page', function(assert) {
+  this.render(hbs`{{pagination-bar-page page=1 currentPage=2 }}`);
+  assert.notOk(this.$().find('li').hasClass('active'));
+});
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#pagination-bar-page}}
-      template block text
-    {{/pagination-bar-page}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+test('on click will fire call action with the page number ', function(assert) {
+  this.set('mockAction', (page) => {
+    assert.ok(page, 1);
+  });
+  this.render(hbs`{{pagination-bar-page page=1 currentPage=2 action=(action mockAction)}}`);
+  assert.notOk(this.$().find('li').hasClass('active'));
 });
