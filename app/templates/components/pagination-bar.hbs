@@ -1,8 +1,8 @@
-{{#if hideDetails}}
+{{#unless hide-details}}
   <p data-test="pagination-details">
     <em>Showing {{firstItemShownIndex}}—{{lastItemShownIndex}} of {{totalItemsCount}} entries</em>
   </p>
-{{/if}}
+{{/unless}}
 
 {{#if showPagination}}
   <ul class="pagination">
