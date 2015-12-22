@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   selectedPage: 1,
   actions: {
     selectPage: function(page) {
-      this.set('selectedPage', page);
+      this.transitionToRoute('developers',{queryParams: {page}});
     }
   }
 

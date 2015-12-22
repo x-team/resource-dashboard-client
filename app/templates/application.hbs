@@ -7,7 +7,7 @@
 
       <ul class="nav navbar-nav" data-test="main-header-navigation">
         <li>{{#link-to "index" data-test="main-header-navigation-index"}}Dashboard{{/link-to}}</li>
-        <li>{{#link-to "developers" data-test="main-header-navigation-developers"}}Developers{{/link-to}}</li>
+        <li>{{#link-to "developers" (query-params page=1) data-test="main-header-navigation-developers"}}Developers{{/link-to}}</li>
         <li>{{#link-to "opportunities" data-test="main-header-navigation-opportunities"}}Opportunities{{/link-to}}</li>
       </ul>
 
@@ -28,7 +28,7 @@
       <nav>
         <ul data-test="main-footer-navigation">
           <li>{{#link-to "index" data-test="main-footer-navigation-index"}}Dashboard{{/link-to}}</li>
-          <li>{{#link-to "developers" data-test="main-footer-navigation-developers"}}Developers{{/link-to}}</li>
+          <li>{{#link-to "developers" (query-params page=1) data-test="main-footer-navigation-developers"}}Developers{{/link-to}}</li>
           <li>{{#link-to "opportunities" data-test="main-footer-navigation-opportunities"}}Opportunities{{/link-to}}</li>
           <li><a href="https://workable.com/" target="_blank" data-test="main-footer-navigation-workable">Workable</a></li>
         </ul>
