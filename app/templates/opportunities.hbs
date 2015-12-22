@@ -3,3 +3,9 @@
     {{opportunity-list-item model=opportunity}}
   {{/each}}
 </ul>
+
+{{pagination-bar
+  page=page
+  totalItemsCount=totalItemsCount
+  onSelect=(action 'selectPage')
+}}
