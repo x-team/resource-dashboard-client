@@ -1,1 +1,5 @@
-Hello from Opportunities!
+<ul class="list-group">
+  {{#each opportunities as |opportunity|}}
+    {{opportunity-list-item model=opportunity}}
+  {{/each}}
+</ul>
