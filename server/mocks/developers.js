@@ -4,24 +4,8 @@ module.exports = function(app) {
   var developersRouter = express.Router();
 
   developersRouter.get('/', function(req, res) {
-    var page = +req.query.page || 1,
-        result = getDevelopers(),
-        allDevelopersCount = result.length,
-        itemsPerPage = 10,
-        totalPages = Math.ceil(allDevelopersCount / itemsPerPage);
-
-    if(page > totalPages) {
-      return res.send(400);
-    }
-
-    var start = ((page - 1) * itemsPerPage) + 1;
-    var end = start + (itemsPerPage - 1);
-
-    result = result.slice(start - 1, end);
-
     res.send({
-      data: result,
-      meta: {totalItemsCount: allDevelopersCount}
+      data: getDevelopers()
     });
   });
 
