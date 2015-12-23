@@ -3,9 +3,12 @@
 </div>
 
 <div class="developers-content">
-  {{developers-list developers=developers}}
+  {{developers-list developers=pagedDevelopers}}
 </div>
 
-<div class="developers-pagination">
-  Developers pagination goes here
-</div>
+{{pagination-bar
+  page=page
+  itemsPerPage=itemsPerPage
+  totalItemsCount=developersCount
+  onSelect=(action 'selectPage')
+}}

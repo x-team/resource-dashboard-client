@@ -5,18 +5,7 @@ module.exports = function(app) {
 
   opportunitiesRouter.get('/', function(req, res) {
     res.send({
-      data: [1, 2, 3, 4, 5].map((id) => {
-        return {
-          "type": "opportunity",
-          "id": `${id}`,
-          "attributes": {
-            "date-from": new Date(),
-            "date-to": new Date(),
-            "name": "Fox",
-            "skills": ["JavaScript", "Node.js"]
-          }
-        };
-      })
+      data: getOpportunities()
     });
   });
 
@@ -55,4 +44,22 @@ module.exports = function(app) {
   //
   //app.use('/api/opportunities', require('body-parser'));
   app.use('/api/opportunities', opportunitiesRouter);
+};
+
+var getOpportunities = function() {
+  //create array from 1..20
+  var result = new Array(20).fill().map((x, index) => index + 1);
+
+  return result.map((id) => {
+    return {
+      "type": "opportunity",
+      "id": `${id}`,
+      "attributes": {
+        "date-from": new Date(),
+        "date-to": new Date(),
+        "name": `Fox ${id}`,
+        "skills": ["JavaScript", "Node.js"]
+      }
+    };
+  })
 };

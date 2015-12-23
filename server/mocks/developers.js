@@ -5,28 +5,7 @@ module.exports = function(app) {
 
   developersRouter.get('/', function(req, res) {
     res.send({
-      data: [1, 2, 3, 4, 5].map((id) => {
-        return {
-          "type": "developer",
-          "id": `${id}`,
-          "attributes": {
-            "available": true,
-            "availableDate": new Date(),
-            "name": "Kamil Ogórek",
-            "first-name": "Kamil",
-            "last-name": "Ogórek",
-            "created-at": new Date(),
-            "updated-at": new Date(),
-            "profile-url": "https://github.com/kamilogorek/",
-            "image-url": "https://avatars2.githubusercontent.com/u/1523305?v=3&s=460",
-            "address": "Kraków, PL",
-            "location": "39.5500507,-105.7820674",
-            "timezone": "Europe/Warsaw",
-            "rate": 128,
-            "skills": ["JavaScript", "Node.js"]
-          }
-        };
-      })
+      data: getDevelopers()
     });
   });
 
@@ -65,4 +44,33 @@ module.exports = function(app) {
   //
   //app.use('/api/developers', require('body-parser'));
   app.use('/api/developers', developersRouter);
+};
+
+
+var getDevelopers = function() {
+  //create array from 1..95
+  var result = new Array(95).fill().map((x, index) => index + 1);
+
+  return result.map((id) => {
+    return {
+      "type": "developer",
+      "id": `${id}`,
+      "attributes": {
+        "available": true,
+        "availableDate": new Date(),
+        "name": `Kamil Ogórek ${id}`,
+        "first-name": `Kamil ${id}`,
+        "last-name": `Ogórek ${id}`,
+        "created-at": new Date(),
+        "updated-at": new Date(),
+        "profile-url": "https://github.com/kamilogorek/",
+        "image-url": "https://avatars2.githubusercontent.com/u/1523305?v=3&s=460",
+        "address": "Kraków, PL",
+        "location": "39.5500507,-105.7820674",
+        "timezone": "Europe/Warsaw",
+        "rate": 128,
+        "skills": ["JavaScript", "Node.js"]
+      }
+    };
+  })
 };
