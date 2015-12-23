@@ -38,6 +38,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-legacy-views": "0.2.0",
+    "ember-power-select": "0.7.2",
     "express": "^4.13.3",
     "glob": "^4.5.3",
     "morgan": "^1.6.1"
