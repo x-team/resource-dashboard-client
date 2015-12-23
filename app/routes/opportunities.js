@@ -1,28 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
-  queryParams: {
-    page: {
-      refreshModel: true
-    }
-  },
-
-  model(params) {
-    var page = +params.page || 1;
-
+  model() {
     return Ember.RSVP.hash({
-      opportunities: this.store.query('opportunity', {page}),
-      page
+      opportunities: this.store.findAll('opportunity')
     });
   },
 
   setupController(controller, model) {
     controller.setProperties({
       opportunities: model.opportunities,
-      page: model.page,
-      totalItemsCount: model.opportunities.get('meta.totalItemsCount')
+      opportunitiesCount: model.opportunities.get('length')
     });
   }
 });
-

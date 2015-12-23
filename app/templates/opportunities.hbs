@@ -1,11 +1,11 @@
 <ul class="list-group">
-  {{#each opportunities as |opportunity|}}
+  {{#each pagedOpportunities as |opportunity|}}
     {{opportunity-list-item model=opportunity}}
   {{/each}}
 </ul>
 
 {{pagination-bar
   page=page
-  totalItemsCount=totalItemsCount
+  totalItemsCount=opportunitiesCount
   onSelect=(action 'selectPage')
 }}
