@@ -84,7 +84,7 @@ test('Header navigation', (assert) => {
   andThen(() => {
     assert.equal(
       currentURL(),
-      '/developers?page=1',
+      '/developers',
       'Clicking developers link redirects to /developers page'
     );
   });
@@ -142,7 +142,7 @@ test('Footer navigation', (assert) => {
   andThen(() => {
     assert.equal(
       currentURL(),
-      '/developers?page=1',
+      '/developers',
       'Clicking developers link redirects to /developers page'
     );
   });
@@ -208,7 +208,7 @@ test('Newest Developers summary list', (assert) => {
   andThen(() => {
     assert.equal(
       currentURL(),
-      '/developers?page=1',
+      '/developers',
       'Clicking more link redirects to /developers page'
     );
   });
@@ -236,7 +236,7 @@ test('Available Soon Developers summary list', (assert) => {
   andThen(() => {
     assert.equal(
       currentURL(),
-      '/developers?page=1',
+      '/developers',
       'Clicking more link redirects to /developers page'
     );
   });
