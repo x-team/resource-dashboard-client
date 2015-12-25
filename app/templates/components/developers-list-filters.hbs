@@ -1,0 +1,27 @@
+<div class="filter-control">
+  {{#power-select options=names selected=item allowClear=true placeholder="Skills" onchange=(action "select") as |name|}}
+    {{name}}
+  {{/power-select}}
+</div>
+
+<div class="filter-control">
+  {{#power-select options=names selected=item allowClear=true placeholder="Location" onchange=(action "select") as |name|}}
+    {{name}}
+  {{/power-select}}
+</div>
+
+<div class="filter-control">
+  {{#power-select options=names selected=item allowClear=true placeholder="Time Zone" onchange=(action "select") as |name|}}
+    {{name}}
+  {{/power-select}}
+</div>
+
+<div class="filter-control">
+  {{#power-select options=names selected=item allowClear=true placeholder="Max Rate" onchange=(action "select") as |name|}}
+    {{name}}
+  {{/power-select}}
+</div>
+
+<div class="filter-control">
+  {{pikaday-input value=startsAt format="MM/DD/YYYY" placeholder="Next Available"}}
+</div>

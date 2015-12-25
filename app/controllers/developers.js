@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  names: ['do', 'does', 'did', 'very long optionvery long option'],
   queryParams: ['page'],
   page: 1,
   itemsPerPage: 10,
@@ -14,8 +15,11 @@ export default Ember.Controller.extend({
     return developers.slice(start, end);
   }),
   actions: {
-    selectPage: function(page) {
+    selectPage(page) {
       this.transitionToRoute({queryParams: {page}});
+    },
+    filterDevelopers(filterParams) {
+      this.transitionToRoute({queryParams: filterParams});
     }
   }
 

@@ -1,7 +1,10 @@
 <h3 class="heading-main">Developers</h3>
 
-<div class="developers-content">
-  Developers filtering goes here
+<div class="filter-controls clearfix">
+  {{developers-list-filters
+    developers=developers
+    onFilter=(action 'filterDevelopers')
+  }}
 </div>
 
 <div class="developers-content">
