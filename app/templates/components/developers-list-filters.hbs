@@ -1,23 +1,23 @@
 <div class="filter-control">
-  {{#power-select options=names selected=item allowClear=true placeholder="Skills" onchange=(action "select") as |name|}}
+  {{#power-select options=allSkills selected=item allowClear=true placeholder="Skills" onchange=(action "select") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{#power-select options=names selected=item allowClear=true placeholder="Location" onchange=(action "select") as |name|}}
+  {{#power-select options=allLocations selected=item allowClear=true placeholder="Location" onchange=(action "select") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{#power-select options=names selected=item allowClear=true placeholder="Time Zone" onchange=(action "select") as |name|}}
+  {{#power-select options=allTimezones selected=item allowClear=true placeholder="Time Zone" onchange=(action "select") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{#power-select options=names selected=item allowClear=true placeholder="Max Rate" onchange=(action "select") as |name|}}
+  {{#power-select options=allRates selected=item allowClear=true placeholder="Max Rate" onchange=(action "select") as |name|}}
     {{name}}
   {{/power-select}}
 </div>

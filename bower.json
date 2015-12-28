@@ -15,6 +15,7 @@
     "bootstrap": "~3.3.6",
     "pikaday": "~1.4.0",
     "moment": ">= 2.8.0",
-    "moment-timezone": ">= 0.1.0"
+    "moment-timezone": ">= 0.1.0",
+    "lodash": "~3.10.1"
   }
 }

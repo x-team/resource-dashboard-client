@@ -14,5 +14,5 @@ export default DS.Model.extend({
   location: DS.attr('string'),
   timezone: DS.attr('string'),
   rate: DS.attr('string'),
-  skills: DS.hasMany('skill')
+  skills: DS.attr()
 });
