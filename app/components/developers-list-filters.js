@@ -5,9 +5,9 @@ export default Ember.Component.extend({
     let allSkills = this.get('developers').mapBy('skills');
     return _.chain(allSkills).flatten().sort().uniq(true).value();
   }),
-  allLocations: Ember.computed('developers.[]', function() {
-    let allLocations = this.get('developers').mapBy('location');
-    return _.chain(allLocations).sort().uniq(true).value();
+  allAddresses: Ember.computed('developers.[]', function() {
+    let allAddresses = this.get('developers').mapBy('address');
+    return _.chain(allAddresses).sort().uniq(true).value();
   }),
   allTimezones: Ember.computed('developers.[]', function() {
     let allTimezones = this.get('developers').mapBy('timezone');
@@ -20,8 +20,7 @@ export default Ember.Component.extend({
   actions: {
     select(field, value) {
       value = value || undefined;
-      console.log(field, value);
-      this.get('onFilter')(field, value)
+      this.get('onFilter')(field, value);
     }
   }
 });

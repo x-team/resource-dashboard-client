@@ -5,7 +5,7 @@
 </div>
 
 <div class="filter-control">
-  {{#power-select options=allLocations selected=location allowClear=true placeholder="Location" onchange=(action "select" "location") as |name|}}
+  {{#power-select options=allAddresses selected=address allowClear=true placeholder="Location" onchange=(action "select" "address") as |name|}}
     {{name}}
   {{/power-select}}
 </div>

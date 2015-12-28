@@ -1,4 +1,5 @@
 /*jshint node:true*/
+var _ = require('lodash');
 module.exports = function(app) {
   var express = require('express');
   var developersRouter = express.Router();
@@ -65,12 +66,68 @@ var getDevelopers = function() {
         "updated-at": new Date(),
         "profile-url": "https://github.com/kamilogorek/",
         "image-url": "https://avatars2.githubusercontent.com/u/1523305?v=3&s=460",
-        "address": "Kraków, PL",
+        "address": _.sample(countrySample),
         "location": "39.5500507,-105.7820674",
-        "timezone": "Europe/Warsaw",
-        "rate": 128,
-        "skills": ["JavaScript", "Node.js"]
+        "timezone": _.sample(timezoneSample),
+        "rate": _.sample(rateSample),
+        "skills": _.sample(skillsSample, _.random(1, skillsSample.length))
       }
     };
   })
 };
+
+var rateSample = [25, 30, 50, 100];
+var timezoneSample = ['UTC', 'CST', 'CT', 'ECT', 'CEST', 'EAT'];
+var skillsSample = ['Javascript', 'React', 'Ember', 'Angular', '.NET', 'Java', 'Ruby', 'Rails', 'Underscore', 'Lodash', 'Backend'];
+var countrySample = [
+  'Albania',
+  'Algeria',
+  'Andorra',
+  'Angola',
+  'Argentina',
+  'Armenia',
+  'Aruba',
+  'Australia',
+  'Austria',
+  'Azerbaijan',
+  'Bahamas',
+  'Bahrain',
+  'Bangladesh',
+  'Barbados',
+  'Belarus',
+  'Belgium',
+  'Belize',
+  'Benin',
+  'Bhutan',
+  'Bolivia',
+  'Bosnia and Herzegovina',
+  'Botswana',
+  'Brazil',
+  'Brunei Darussalam',
+  'Bulgaria',
+  'Burkina Faso',
+  'Burundi',
+  'Cambodia',
+  'Cameroon',
+  'Canada',
+  'Cape Verde',
+  'Central African Republic',
+  'Chad',
+  'Chile',
+  'China',
+  'Colombia',
+  'Congo Brazzaville',
+  'Costa Rica',
+  'Croatia',
+  'Cuba',
+  'Cyprus',
+  'Czech Republic',
+  'Democratic Republic of the Congo',
+  'Denmark',
+  'Dominican Republic',
+  'Ecuador',
+  'Egypt',
+  'El Salvador',
+  'Equatorial Guinea',
+  'Eritrea'
+];

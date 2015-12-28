@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   names: ['do', 'does', 'did', 'very long optionvery long option'],
-  queryParams: ['page','skill','location','timezone','rate','nextAvailable'],
+  queryParams: ['page','skill','address','timezone','rate','nextAvailable'],
   page: 1,
   itemsPerPage: 10,
   pagedDevelopers: Ember.computed('filteredDevelopers.[]', 'page', 'itemsPerPage', function(){
@@ -17,14 +17,14 @@ export default Ember.Controller.extend({
   filteredDevelopers: Ember.computed(
     'developers',
     'skill',
-    'location',
+    'address',
     'timezone',
     'rate',
     'nextAvailable',
     function() {
       let developers = this.get('developers');
       let skill = this.get('skill');
-      let location = this.get('location');
+      let address = this.get('address');
       let timezone = this.get('timezone');
       let maxRate = this.get('rate');
       //let nextAvailable = this.get('nextAvailable');
@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
         if(skill && !developer.get('skills').contains(skill)) {
           return false;
         }
-        if(location && developer.get('location') !== location) {
+        if(address && developer.get('address') !== address) {
           return false;
         }
         if(timezone && developer.get('timezone') !== timezone) {
