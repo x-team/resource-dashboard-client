@@ -13,6 +13,6 @@ export default DS.Model.extend({
   address: DS.attr('string'),
   location: DS.attr('string'),
   timezone: DS.attr('string'),
-  rate: DS.attr('string'),
+  rate: DS.attr('number'),
   skills: DS.attr()
 });

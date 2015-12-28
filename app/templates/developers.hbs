@@ -3,6 +3,11 @@
 <div class="filter-controls clearfix">
   {{developers-list-filters
     developers=developers
+    skill=skill
+    location=location
+    timezone=timezone
+    rate=rate
+    nextAvailable=nextAvailable
     onFilter=(action 'filterDevelopers')
   }}
 </div>
@@ -14,6 +19,6 @@
 {{pagination-bar
   page=page
   itemsPerPage=itemsPerPage
-  totalItemsCount=developersCount
+  totalItemsCount=filteredDevelopers.length
   onSelect=(action 'selectPage')
 }}

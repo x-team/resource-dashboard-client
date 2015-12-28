@@ -8,8 +8,7 @@ export default Ember.Route.extend({
   },
   setupController (controller, model) {
     controller.setProperties({
-      developers: model.developers,
-      developersCount: model.developers.get('length')
+      developers: model.developers
     });
   }
 });
