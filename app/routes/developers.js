@@ -20,17 +20,12 @@ export default Ember.Route.extend({
        return value;
      }
      if(moment.isDate(value)) {
-       return moment.utc(value).format('L')
+       return moment.utc(value).format('L');
      }
      return '' + value;
   },
 
   deserializeQueryParam(value, urlKey, defaultValueType) {
-    let dateObj = moment.utc(value, 'L')
-    if(dateObj.isValid()) {
-      return dateObj.toDate();
-    }
-
     if (defaultValueType === 'array') {
       return value;
     }
@@ -40,6 +35,12 @@ export default Ember.Route.extend({
     } else if (defaultValueType === 'number') {
       return (Number(value)).valueOf();
     }
+
+    let dateObj = moment.utc(value, 'L');
+    if(dateObj.isValid()) {
+      return dateObj.toDate();
+    }
+
     return value;
   }
 });

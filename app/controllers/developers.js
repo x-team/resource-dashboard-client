@@ -14,7 +14,16 @@ export default Ember.Controller.extend({
 
     let start = (page - 1) * itemsPerPage;
     let end = start + itemsPerPage;
-    return filteredDevelopers.slice(start, end);
+    let itemsShown = filteredDevelopers.slice(start, end);
+
+    //force redirect to first page if current page has no items
+    if(itemsShown.length === 0) {
+      Ember.run.later(() => {
+        this.set('page', 1);
+      });
+    }
+
+    return itemsShown;
   }),
 
   filteredDevelopers: Ember.computed(
@@ -41,7 +50,7 @@ export default Ember.Controller.extend({
       });
 
 
-      var filteredDevelopers = developers.filter(function(developer) {
+      let filteredDevelopers = developers.filter(function(developer) {
         if(skills) {
           let foundSkills = _.intersection(skills, developer.get('skills'));
           //if not all skills are matched in the filter
@@ -64,7 +73,7 @@ export default Ember.Controller.extend({
 
           let momentDeveloperAvailableDate = moment.utc(developerAvailableDate);
           let momentDateSelected = moment.utc(nextAvailable);
-          let isAvailableBefore = momentDateSelected.isAfter(momentDeveloperAvailableDate)
+          let isAvailableBefore = momentDateSelected.isAfter(momentDeveloperAvailableDate);
 
           if(developerAvailableDate && !isDeveloperAvailable && !isAvailableBefore) {
             return false;
@@ -81,7 +90,10 @@ export default Ember.Controller.extend({
       this.transitionToRoute({queryParams: {page}});
     },
     filterDevelopers(field, value) {
-      this.set(field, value);
+      this.setProperties({
+        [field]: value,
+        page: 1
+      });
     }
   }
 
