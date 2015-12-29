@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  attributeBindings: ['data-test'],
+  'data-test': 'developersFilter',
+
   allSkills: Ember.computed('developers.[]', function() {
     let allSkills = this.get('developers').mapBy('skills');
     return _.chain(allSkills).flatten().sort().uniq(true).value();

@@ -12,23 +12,23 @@
       <ul class="list-plain">
         <li>
           <strong>Skills:</strong>
-          {{array-to-string model.skills}}
+     	  <span data-test="developer-skills">{{array-to-string model.skills}}</span>
         </li>
         <li>
           <strong>Available:</strong>
-          No
+          <span data-test="developer-available">{{if model.available 'Yes' 'No'}}</span>
         </li>
         <li>
           <strong>Rate:</strong>
-          ${{model.rate}}
+          $<span data-test="developer-rate">{{model.rate}}</span>
         </li>
         <li>
           <strong>Address:</strong>
-          {{model.address}}
+          <span data-test="developer-address">{{model.address}}</span>
         </li>
         <li>
           <strong>Timezone:</strong>
-          {{model.timezone}}
+          <span data-test="developer-timezone">{{model.timezone}}</span>
         </li>
       </ul>
     </div>
