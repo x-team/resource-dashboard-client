@@ -1,27 +1,27 @@
 <div class="filter-control">
-  {{#power-select options=allSkills selected=skill allowClear=true multiple=true placeholder="Skills" onchange=(action "select" "skill") as |name|}}
+  {{#power-select options=allSkills selected=skills allowClear=true multiple=true placeholder="Skills" onchange=(action "select" "fSkills") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{#power-select options=allAddresses selected=address allowClear=true placeholder="Location" onchange=(action "select" "address") as |name|}}
+  {{#power-select options=allAddresses selected=address allowClear=true placeholder="Location" onchange=(action "select" "fAddress") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{#power-select options=allTimezones selected=timezone allowClear=true placeholder="Time Zone" onchange=(action "select" "timezone") as |name|}}
+  {{#power-select options=allTimezones selected=timezone allowClear=true placeholder="Time Zone" onchange=(action "select" "fTimezone") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{#power-select options=allRates selected=rate allowClear=true placeholder="Max Rate" onchange=(action "select" "rate") as |name|}}
+  {{#power-select options=allRates selected=rate allowClear=true placeholder="Max Rate" onchange=(action "select" "fRate") as |name|}}
     {{name}}
   {{/power-select}}
 </div>
 
 <div class="filter-control">
-  {{pikaday-input value=nextAvailable format="MM/DD/YYYY" placeholder="Next Available"}}
+  {{pikaday-input value=fNextAvailable format="MM/DD/YYYY" placeholder="Next Available"}}
 </div>

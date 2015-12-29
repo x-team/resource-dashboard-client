@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  names: ['do', 'does', 'did', 'very long optionvery long option'],
-  queryParams: ['page','skill','address','timezone','rate','nextAvailable'],
+  queryParams: ['page','fAddress','fTimezone','fRate','fNextAvailable', 'fSkills'],
+  fSkills: [],
   page: 1,
   itemsPerPage: 10,
-  pagedDevelopers: Ember.computed('filteredDevelopers.[]', 'page', 'itemsPerPage', function(){
+  pagedDevelopers: Ember.computed('filteredDevelopers.[]', 'page', 'itemsPerPage', function() {
     let page = this.get('page');
     let itemsPerPage = this.get('itemsPerPage');
     let filteredDevelopers = this.get('filteredDevelopers');
@@ -16,22 +16,26 @@ export default Ember.Controller.extend({
   }),
   filteredDevelopers: Ember.computed(
     'developers',
-    'skill',
-    'address',
-    'timezone',
-    'rate',
-    'nextAvailable',
+    'fSkills',
+    'fAddress',
+    'fTimezone',
+    'fRate',
+    'fNextAvailable',
     function() {
       let developers = this.get('developers');
-      let skill = this.get('skill');
-      let address = this.get('address');
-      let timezone = this.get('timezone');
-      let maxRate = this.get('rate');
+      let skills = this.get('fSkills');
+      let address = this.get('fAddress');
+      let timezone = this.get('fTimezone');
+      let maxRate = this.get('fRate');
       //let nextAvailable = this.get('nextAvailable');
 
       var filteredDevelopers = developers.filter(function(developer) {
-        if(skill && !developer.get('skills').contains(skill)) {
-          return false;
+        if(skills) {
+          let foundSkills = _.intersection(skills, developer.get('skills'));
+          //if not all skills are matched in the filter
+          if(foundSkills.length < skills.length) {
+            return false;
+          }
         }
         if(address && developer.get('address') !== address) {
           return false;
