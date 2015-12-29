@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Controller.extend({
-  queryParams: ['page','fAddress','fTimezone','fRate','fNextAvailable', 'fSkills'],
-  fSkills: [],
+  queryParams: ['page','address','timezone','rate','nextAvailable', 'skills'],
+  skills: [],
   page: 1,
   itemsPerPage: 10,
+
   pagedDevelopers: Ember.computed('filteredDevelopers.[]', 'page', 'itemsPerPage', function() {
     let page = this.get('page');
     let itemsPerPage = this.get('itemsPerPage');
@@ -14,20 +16,30 @@ export default Ember.Controller.extend({
     let end = start + itemsPerPage;
     return filteredDevelopers.slice(start, end);
   }),
+
   filteredDevelopers: Ember.computed(
     'developers',
-    'fSkills',
-    'fAddress',
-    'fTimezone',
-    'fRate',
-    'fNextAvailable',
+    'skills',
+    'address',
+    'timezone',
+    'rate',
+    'nextAvailable',
     function() {
       let developers = this.get('developers');
-      let skills = this.get('fSkills');
-      let address = this.get('fAddress');
-      let timezone = this.get('fTimezone');
-      let maxRate = this.get('fRate');
-      //let nextAvailable = this.get('nextAvailable');
+      let skills = this.get('skills');
+      let address = this.get('address');
+      let timezone = this.get('timezone');
+      let maxRate = this.get('rate');
+      let nextAvailable = this.get('nextAvailable');
+      let isNextAvailableDefined = moment.isDate(nextAvailable);
+
+      Ember.run.later(() => {
+        if(!isNextAvailableDefined) {
+          //clear querystring
+          this.set('nextAvailable', undefined);
+        }
+      });
+
 
       var filteredDevelopers = developers.filter(function(developer) {
         if(skills) {
@@ -45,6 +57,18 @@ export default Ember.Controller.extend({
         }
         if(maxRate && developer.get('rate') > maxRate) {
           return false;
+        }
+        if(isNextAvailableDefined) {
+          let developerAvailableDate = developer.get('availableDate');
+          let isDeveloperAvailable = developer.get('available');
+
+          let momentDeveloperAvailableDate = moment.utc(developerAvailableDate);
+          let momentDateSelected = moment.utc(nextAvailable);
+          let isAvailableBefore = momentDateSelected.isAfter(momentDeveloperAvailableDate)
+
+          if(developerAvailableDate && !isDeveloperAvailable && !isAvailableBefore) {
+            return false;
+          }
         }
 
         return true;

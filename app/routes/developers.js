@@ -1,3 +1,4 @@
+import moment from 'moment';
 import Ember from 'ember';
 
 export default Ember.Route.extend({
@@ -18,10 +19,18 @@ export default Ember.Route.extend({
      if (defaultValueType === 'array') {
        return value;
      }
+     if(moment.isDate(value)) {
+       return moment.utc(value).format('L')
+     }
      return '' + value;
   },
 
   deserializeQueryParam(value, urlKey, defaultValueType) {
+    let dateObj = moment.utc(value, 'L')
+    if(dateObj.isValid()) {
+      return dateObj.toDate();
+    }
+
     if (defaultValueType === 'array') {
       return value;
     }
