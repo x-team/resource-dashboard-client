@@ -1,0 +1,34 @@
+.navbar-container {
+  background: $navbarBackgroundColor;
+}
+
+.navbar {
+  background: $navbarBackgroundColor;
+  margin-bottom: 0;
+
+  .login-btn {
+    margin-right:0;
+  }
+}
+
+.navbar-nav > li {
+  margin: 0 15px;
+}
+
+.navbar-nav > li > a {
+  color: $navbarTextColor;
+  padding: 15px 0 2px 0;
+  &:hover, &:focus, &.active {
+    background: inherit;
+    color: $navbarTextActiveColor;
+    border-bottom: 3px solid $navbarBorderColor;
+  }
+}
+.navbar-header a {
+  color: $navbarTextColor;
+  color: $navbarTextActiveColor;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding: 15px 30px;
+}
