@@ -6,9 +6,11 @@
 @import 'layout';
 @import 'base';
 @import 'generic';
+@import 'headings';
 
-@import 'components/nav';
-@import 'components/footer';
-@import 'components/buttons';
-@import 'components/lists';
-@import 'components/graphs';
+@import 'modules/nav';
+@import 'modules/footer';
+@import 'modules/buttons';
+@import 'modules/lists';
+@import 'modules/graphs';
+@import 'modules/pagination';

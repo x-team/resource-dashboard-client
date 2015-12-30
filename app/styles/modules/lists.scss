@@ -27,3 +27,25 @@
   flex: 1;
 }
 
+/* List two columns */
+.list-two-columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  list-style: none;
+  > li {
+    width: 50%;
+    border-bottom: 1px solid #f2f4f6;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Profile List item */
+.profile-list-item {
+  .item-heading {
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
