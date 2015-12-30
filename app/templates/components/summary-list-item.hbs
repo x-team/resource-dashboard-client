@@ -1,15 +1,28 @@
-<h3 class="list-group-item-heading">{{model.name}}</h3>
 <div class="list-group-item-text">
-  {{#if isOpportunityType}}
-    <time>
-      {{model.dateFrom}}
-      {{#if model.dateTo}}- {{model.dateTo}}{{/if}}
-    </time>
-  {{/if}}
+  <h3 class="list-group-item-heading">
+    {{model.name}}
+  </h3>
+  <div>
+    {{!--
+    {{#if isOpportunityType}}
+      <time>
+        {{model.dateFrom}}
+        {{#if model.dateTo}}- {{model.dateTo}}{{/if}}
+      </time>
+    {{/if}}
+    {{#if isDeveloperType}}
+      <time>{{model.createdAt}}</time>
+    {{/if}}
+    --}}
+    <time>Jan, 2016 - June, 2011</time>
+  </div>
+</div>
 
-  {{#if isDeveloperType}}
-    <time>{{model.createdAt}}</time>
-  {{/if}}
+<div class="list-group-item-tags">
+    Javascript, Reactjs, Nodejs, HTML, UX
+  {{array-to-string model.skills}}
+</div>
 
-  <em>{{array-to-string model.skills}}</em>
+<div class="list-group-item-link">
+  go
 </div>

@@ -5,8 +5,10 @@
 
 @import 'layout';
 @import 'base';
+@import 'generic';
 
 @import 'components/nav';
+@import 'components/footer';
 @import 'components/buttons';
-@import 'components/summary-graph';
-@import 'components/summary-lists';
+@import 'components/lists';
+@import 'components/graphs';

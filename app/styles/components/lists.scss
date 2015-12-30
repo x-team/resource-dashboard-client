@@ -1,0 +1,29 @@
+/* summary lists */
+.summary-lists {
+  display: flex;
+}
+.summary-list {
+  flex: 1;
+  margin-right: 20px;
+}
+
+/* list group */
+.list-group-item {
+  display: flex;
+  color: $textLightColor;
+  font-size: 14px;
+  border: 1px solid $summaryListGroupBorder;
+  .list-group-item-heading {
+    font-size: 14px;
+  }
+}
+.list-group-item-text {
+  flex: 2;
+}
+.list-group-item-tags {
+  flex: 4;
+}
+.list-group-item-link {
+  flex: 1;
+}
+
