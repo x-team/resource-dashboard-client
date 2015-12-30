@@ -1,3 +1,7 @@
+.list-plain {
+  list-style: none;
+}
+
 /* summary lists */
 .summary-lists {
   display: flex;
@@ -42,7 +46,7 @@
 }
 
 /* Profile List item */
-.profile-list-item {
+.list-item {
   .item-heading {
     margin-top: 0;
     font-size: 14px;

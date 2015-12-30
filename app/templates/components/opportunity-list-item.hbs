@@ -1,10 +1,20 @@
-<h3 class="list-group-item-heading">{{model.name}}</h3>
-<div class="list-group-item-text">
-  <ul>
-    <li>
-      <strong>Skills:</strong>
-      {{array-to-string model.skills}}
-    </li>
-  </ul>
+<h3 class="item-heading">{{model.name}}</h3>
+<ul class="list-plain">
+  <li>
+    <strong>Skills:</strong>
+    {{array-to-string model.skills}}
+  </li>
+  <li>
+    <strong>Date From:</strong>
+    <time>Jan, 2016</time>
+  </li>
+  <li>
+    <strong>Date To:</strong>
+    <time>Jan, 2016</time>
+  </li>
+</ul>
+<div>
+  <a class="btn btn-default btn-xs">Edit</a>
+  <a class="btn btn-danger btn-xs">Delete</a>
 </div>
 
