@@ -40,6 +40,7 @@
     "ember-export-application-global": "^1.0.4",
     "ember-legacy-views": "0.2.0",
     "ember-moment": "4.2.1",
+    "ember-modal-dialog": "0.8.3",
     "ember-pikaday": "0.14.0",
     "ember-power-select": "0.7.2",
     "express": "^4.13.3",

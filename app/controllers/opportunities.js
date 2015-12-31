@@ -14,6 +14,11 @@ export default Ember.Controller.extend({
     return opportunities.slice(start, end);
   }),
 
+  allSkills: Ember.computed('opportunities.[]', function() {
+    let allSkills = this.get('opportunities').mapBy('skills');
+    return _.chain(allSkills).flatten().sort().uniq(true).value();
+  }),
+
   actions: {
     selectPage: function(page) {
       this.transitionToRoute({ queryParams: {page}});

@@ -2,6 +2,8 @@
 
 /* Plugins */
 @import "ember-power-select";
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
 
 @import 'layout';
 @import 'base';
