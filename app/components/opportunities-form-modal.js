@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   isEdit: false,
   actions: {
     createModal() {
-      var opportunity = this.get('store').createRecord('opportunity');
+      let opportunity = this.get('store').createRecord('opportunity');
       this.setProperties({
         opportunity,
         isEdit: false,
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
       });
     },
     closeModal() {
-      var opportunity = this.get('opportunity');
+      let opportunity = this.get('opportunity');
       if(this.get('isEdit')) {
         opportunity.rollbackAttributes();
       }
@@ -31,11 +31,27 @@ export default Ember.Component.extend({
       this.set('showModal', false);
     },
     save() {
-      var opportunity = this.get('opportunity');
-      opportunity.save().then(() => {
+      let opportunity = this.get('opportunity');
+      opportunity.save().then(()=>{
+        this.set('showModal', false);
+      }, ()=>{
+        if(this.get('isEdit')) { opportunity.rollbackAttributes();
+        }
+        else {
+          opportunity.destroyRecord();
+        }
         this.set('showModal', false);
       });
       return false;
+    },
+    createOpportunity(dropdown, e) {
+      if(e.keyCode !== 13) {return;}
+      let newSkill = e.target.value;
+      let selectedSkills = Array.from(this.get('opportunity.skills') || []); //Array.from weird workaround to make the update works
+      if (newSkill.length > 0 && this.get('allSkills').indexOf(newSkill) === -1 && selectedSkills.indexOf(newSkill) === -1) {
+        selectedSkills.push(newSkill)
+        this.set('opportunity.skills', selectedSkills);
+      }
     }
   }
 });
