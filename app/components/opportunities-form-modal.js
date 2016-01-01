@@ -32,10 +32,16 @@ export default Ember.Component.extend({
     },
     save() {
       let opportunity = this.get('opportunity');
-      opportunity.save().then(()=>{
+      let isEdit = this.get('isEdit');
+
+      opportunity.save().then((opportunity)=>{
+        if(!isEdit) {
+          this.get('onadd')(opportunity);
+        }
         this.set('showModal', false);
       }, ()=>{
-        if(this.get('isEdit')) { opportunity.rollbackAttributes();
+        if(isEdit) {
+          opportunity.rollbackAttributes();
         }
         else {
           opportunity.destroyRecord();
@@ -44,7 +50,7 @@ export default Ember.Component.extend({
       });
       return false;
     },
-    createOpportunity(dropdown, e) {
+    createSkill(dropdown, e) {
       if(e.keyCode !== 13) {return;}
       let newSkill = e.target.value;
       let selectedSkills = Array.from(this.get('opportunity.skills') || []); //Array.from weird workaround to make the update works
