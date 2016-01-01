@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 
   allSkills: Ember.computed('opportunities.[]', function() {
     let allSkills = this.get('opportunities').mapBy('skills');
-    return _.chain(allSkills).flatten().sort().uniq(true).value();
+    return _.chain(allSkills).flatten().sort().uniq(true).filter(a => a).value();
   }),
 
   actions: {
