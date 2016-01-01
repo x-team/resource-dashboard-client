@@ -7,8 +7,18 @@
     </div>
 
     <div class="form-group">
+      <label>From</label>
+      {{pikaday-input value=opportunity.dateFrom format="MM/DD/YYYY" class="form-control"}}
+    </div>
+
+    <div class="form-group">
+      <label>To</label>
+      {{pikaday-input value=opportunity.dateTo format="MM/DD/YYYY" class="form-control"}}
+    </div>
+
+    <div class="form-group">
       <label>Skills</label>
-     {{#power-select selected=opportunity.skills multiple=true options=allSkills onchange=(action (mut opportunity.skills)) onkeydown=(action "createOpportunity") as |name|}}
+     {{#power-select selected=opportunity.skills multiple=true options=allSkills onchange=(action (mut opportunity.skills)) onkeydown=(action "createSkill") as |name|}}
         {{name}}
       {{else}}
         Press Enter to Create

@@ -20,8 +20,11 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    selectPage: function(page) {
+    selectPage(page) {
       this.transitionToRoute({ queryParams: {page}});
+    },
+    addOpportunity(opportunity) {
+      this.get('opportunities').addObject(opportunity)
     }
   }
 });

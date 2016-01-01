@@ -10,7 +10,9 @@ module.exports = function(app) {
   });
 
   opportunitiesRouter.post('/', function(req, res) {
-    res.status(201).end();
+    var newOpportunity = getOpportunities()[0];
+    newOpportunity.id = "100"
+    res.send(201, {data: newOpportunity});
   });
 
   opportunitiesRouter.get('/:id', function(req, res) {

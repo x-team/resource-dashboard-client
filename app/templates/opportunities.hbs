@@ -1,5 +1,5 @@
 <h3 class="heading-main">Opportunities</h3>
-{{#opportunities-form-modal allSkills=allSkills as |createModal editModal|}}
+{{#opportunities-form-modal allSkills=allSkills onadd=(action 'addOpportunity') as |createModal editModal|}}
   <a onclick={{action createModal}}>Create New Opportunity</a>
 
   <ul class="list-two-columns">
@@ -11,6 +11,6 @@
 
 {{pagination-bar
   page=page
-  totalItemsCount=opportunitiesCount
+  totalItemsCount=opportunities.length
   onSelect=(action 'selectPage')
 }}
