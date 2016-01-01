@@ -1,22 +1,22 @@
 {{#if showModal}}
   {{#modal-dialog targetAttachment="center"
                   translucentOverlay=true}}
-    <form onsubmit={{action 'save'}}>
-      <div class="form-group">
-        <label>Name</label>
-        {{input class="form-control" value=opportunity.name}}
-      </div>
+    <div class="form-group">
+      <label>Name</label>
+      {{input class="form-control" value=opportunity.name}}
+    </div>
 
-      <div class="form-group">
-        <label>Skills</label>
-       {{#power-select selected=opportunity.skills multiple=true options=allSkills onchange=(action (mut opportunity.skills)) as |name|}}
-          {{name}}
-        {{/power-select}}
-      </div>
+    <div class="form-group">
+      <label>Skills</label>
+     {{#power-select selected=opportunity.skills multiple=true options=allSkills onchange=(action (mut opportunity.skills)) onkeydown=(action "createOpportunity") as |name|}}
+        {{name}}
+      {{else}}
+        Press Enter to Create
+      {{/power-select}}
+    </div>
 
-      <button type="submit" class="btn btn-active">Submit</button>
-      <button type="button" class="btn btn-danger" onclick={{action 'closeModal'}}>Cancel</button>
-    </form>
+    <button onclick={{action 'save'}} class="btn btn-active">Submit</button>
+    <button onclick={{action 'closeModal'}} class="btn btn-danger">Cancel</button>
   {{/modal-dialog}}
 {{/if}}
 
