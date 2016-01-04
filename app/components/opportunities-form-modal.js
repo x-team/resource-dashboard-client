@@ -55,7 +55,7 @@ export default Ember.Component.extend({
       let newSkill = e.target.value;
       let selectedSkills = Array.from(this.get('opportunity.skills') || []); //Array.from weird workaround to make the update works
       if (newSkill.length > 0 && this.get('allSkills').indexOf(newSkill) === -1 && selectedSkills.indexOf(newSkill) === -1) {
-        selectedSkills.push(newSkill)
+        selectedSkills.push(newSkill);
         this.set('opportunity.skills', selectedSkills);
       }
     }
