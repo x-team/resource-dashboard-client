@@ -1,6 +1,6 @@
 <h3 class="heading-main">Opportunities</h3>
 {{#opportunity-form-modal allSkills=allSkills onadd=(action 'addOpportunity') as |createModal editModal|}}
-  <a onclick={{action createModal}} class="btn btn-success">Create</a>
+  <a onclick={{action createModal}} class="btn btn-success" data-test="opportunity-create-btn">Create</a>
   <ul class="list-two-columns">
     {{#each pagedOpportunities as |opportunity|}}
       {{opportunity-list-item model=opportunity editAction=(action editModal opportunity) deleteAction=(action 'showDeleteOpportunityModal' opportunity)}}
