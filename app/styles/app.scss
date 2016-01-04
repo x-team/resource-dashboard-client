@@ -1,10 +1,16 @@
+@import 'vars';
+
 /* Plugins */
 @import "ember-power-select";
 
 @import 'layout';
-@import 'header';
-@import 'content';
-@import 'footer';
+@import 'base';
+@import 'generic';
+@import 'headings';
 
-@import 'components/summary-graph';
-@import 'components/summary-lists';
+@import 'modules/nav';
+@import 'modules/footer';
+@import 'modules/buttons';
+@import 'modules/lists';
+@import 'modules/graphs';
+@import 'modules/pagination';

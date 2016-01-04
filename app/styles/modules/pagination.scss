@@ -1,0 +1,14 @@
+.pagination > li  {
+
+  > a {
+    margin-right: 5px;
+    border-radius: 5px;
+    border-color: #e1e3e6;
+    color: #7c8387;
+  }
+  &.active > a, &.active > a:hover {
+    background: #f0f1f2;
+    border-color: #e1e3e6;
+    color: #7c8387;
+  }
+}

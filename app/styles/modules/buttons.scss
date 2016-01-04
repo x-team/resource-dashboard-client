@@ -1,0 +1,8 @@
+.login-btn {
+  color: white;
+  background: $loginBtn;
+  padding: 6px 20px;
+  &:hover, &:focus {
+    color: white;
+  }
+}

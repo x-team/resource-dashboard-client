@@ -1,17 +1,14 @@
 .main-footer {
-  background: rgb(11, 42, 60);
-
+  background: $navbarBackgroundColor;
   ul {
     text-align: center;
     padding: 0;
     margin: 20px 0;
   }
-
   li {
     display: inline-block;
     margin: 0 10px;
   }
-
   a {
     color: #ccc;
   }
