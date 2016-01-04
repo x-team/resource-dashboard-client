@@ -2,15 +2,15 @@
 <ul class="list-plain">
   <li>
     <strong>Skills:</strong>
-    {{array-to-string model.skills}}
+    {{model.skills}}
   </li>
   <li>
     <strong>Date From:</strong>
-    <time>Jan, 2016</time>
+    <time>{{moment-format model.dateFrom}}</time>
   </li>
   <li>
     <strong>Date To:</strong>
-    <time>Jan, 2016</time>
+    <time>{{moment-format model.dateTo}}</time>
   </li>
 </ul>
 
@@ -18,4 +18,3 @@
   <a onclick={{action editAction}} class="btn btn-default btn-xs">Edit</a>
   <a onclick={{action deleteAction}} class="btn btn-danger btn-xs">Delete</a>
 </div>
-
