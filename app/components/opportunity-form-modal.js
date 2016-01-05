@@ -3,51 +3,62 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service('store'),
   showModal: false,
-  isEdit: false,
   actions: {
 
     createModal() {
-      let opportunity = this.get('store').createRecord('opportunity');
       this.setProperties({
-        opportunity,
-        isEdit: false,
+        opportunity: Ember.Object.create(),
+        editedOpportunity: null,
         showModal: true
       });
     },
 
     editModal(opportunity) {
       this.setProperties({
-        opportunity,
-        isEdit: true,
+        opportunity: Ember.Object.create({
+          name: opportunity.get('name'),
+          dateFrom: opportunity.get('dateFrom'),
+          dateTo: opportunity.get('dateTo'),
+          skills: opportunity.get('skills')
+        }),
+        editedOpportunity: opportunity,
         showModal: true
       });
     },
 
     closeModal() {
-      let opportunity = this.get('opportunity');
-      if(this.get('isEdit')) {
-        opportunity.rollbackAttributes();
-      }
-      else {
-        opportunity.destroyRecord();
-      }
-      this.set('showModal', false);
+      this.setProperties({
+        editedOpportunity: null,
+        opportunity: null,
+        showModal: false
+      });
     },
 
     save() {
       let opportunity = this.get('opportunity');
-      let isEdit = this.get('isEdit');
+      let opportunityToSave = this.get('editedOpportunity');
+      let isEdit = !!opportunityToSave;
+      if(!isEdit) {
+        opportunityToSave = this.get('store').createRecord('opportunity');
+      }
 
-      opportunity.save().then(()=>{
-        this.set('showModal', false);
+      opportunityToSave.setProperties({
+        name: opportunity.get('name'),
+        dateFrom: opportunity.get('dateFrom'),
+        dateTo: opportunity.get('dateTo'),
+        skills: opportunity.get('skills')
+      });
+
+      opportunityToSave.save().then(()=>{
+        this.send('closeModal');
       }, ()=>{
         if(isEdit) {
-          opportunity.rollbackAttributes();
+          opportunityToSave.rollbackAttributes();
         }
         else {
-          opportunity.destroyRecord();
+          opportunityToSave.destroyRecord();
         }
-        this.set('showModal', false);
+        this.send('closeModal');
       });
       return false;
     },

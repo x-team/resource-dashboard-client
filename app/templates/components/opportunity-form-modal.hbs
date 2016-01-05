@@ -33,7 +33,7 @@
         {{/power-select}}
       </div>
 
-      <button onclick={{action 'save'}} class="btn btn-active" data-test="opportunity-save">{{if isEdit 'Save' 'Create'}}</button>
+      <button onclick={{action 'save'}} class="btn btn-active" data-test="opportunity-save">{{if editedOpportunity 'Save' 'Create'}}</button>
       <button onclick={{action 'closeModal'}} class="btn btn-danger" data-test="opportunity-cancel">Cancel</button>
     </div>
   {{/modal-dialog}}

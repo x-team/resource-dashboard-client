@@ -23,7 +23,7 @@ module.exports = function(app) {
     });
   });
 
-  opportunitiesRouter.put('/:id', function(req, res) {
+  opportunitiesRouter.patch('/:id', function(req, res) {
     res.send({
       'opportunities': {
         id: req.params.id
