@@ -36,9 +36,10 @@ test('Modal title is changed to creating a new opportunity when clicking create 
 
 /* Edit */
 test('Modal is shown when clicking editModal', function(assert) {
+  this.set('opportunity', Ember.Object.create());
   this.render(hbs`
     {{#opportunity-form-modal as |createModal editModal|}}
-      <a onclick={{action editModal}}>action</a>
+      <a onclick={{action editModal opportunity}}>action</a>
     {{/opportunity-form-modal}}
   `);
   this.$('a').click();
@@ -47,7 +48,8 @@ test('Modal is shown when clicking editModal', function(assert) {
 
 test('Modal title contains the clicked opportunity name when clicking on edit', function(assert) {
   const name = 'foo';
-  this.set('opportunity', {name});
+
+  this.set('opportunity', Ember.Object.create({name: name}));
   this.render(hbs`
     {{#opportunity-form-modal as |createModal editModal|}}
       <a onclick={{action editModal opportunity}}>action</a>
@@ -59,7 +61,7 @@ test('Modal title contains the clicked opportunity name when clicking on edit', 
 });
 
 test('opportunity name is populated with the clicked opportunity when clicking editModal', function(assert) {
-  this.set('opportunity', {name: 'foo'});
+  this.set('opportunity', Ember.Object.create({name: 'foo'}));
   this.render(hbs`
     {{#opportunity-form-modal as |createModal editModal|}}
       <a onclick={{action editModal opportunity}}>action</a>
