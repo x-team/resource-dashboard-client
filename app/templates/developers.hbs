@@ -1,7 +1,15 @@
 <h3 class="heading-main">Developers</h3>
 
-<div class="developers-content">
-  Developers filtering goes here
+<div class="filter-controls clearfix">
+  {{developers-list-filters
+    developers=developers
+    address=address
+    timezone=timezone
+    rate=rate
+    nextAvailable=nextAvailable
+    skills=skills
+    onFilter=(action 'filterDevelopers')
+  }}
 </div>
 
 <div class="developers-content">
@@ -11,6 +19,6 @@
 {{pagination-bar
   page=page
   itemsPerPage=itemsPerPage
-  totalItemsCount=developersCount
+  totalItemsCount=filteredDevelopers.length
   onSelect=(action 'selectPage')
 }}
