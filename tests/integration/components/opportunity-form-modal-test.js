@@ -34,19 +34,6 @@ test('Modal title is changed to creating a new opportunity when clicking create 
   assert.ok(Ember.$(`${modalEl} h2`).text().indexOf('Creating a new opportunity') > -1);
 });
 
-test('onadd is called after clicking save if save successed', function(assert) {
-  this.set('mockOnAdd', () => {
-    assert.ok(1);
-  });
-  this.render(hbs`
-    {{#opportunity-form-modal onadd=(action mockOnAdd) as |createModal editModal|}}
-      <a onclick={{action createModal}}>action</a>
-    {{/opportunity-form-modal}}
-  `);
-  this.$('a').click();
-  Ember.$(`${modalEl} [data-test=opportunity-save]`).click();
-});
-
 /* Edit */
 test('Modal is shown when clicking editModal', function(assert) {
   this.render(hbs`

@@ -4,10 +4,13 @@ export default Ember.Controller.extend({
   queryParams: ['page'],
   page: 1,
   itemsPerPage: 10,
-  pagedOpportunities: Ember.computed('page', 'opportunities.[]', function(){
+  savedOpportunities: Ember.computed('opportunities.@each.isNew', function() {
+    return this.get('opportunities').filter((opportunity) => !opportunity.get('isNew'));
+  }),
+  pagedOpportunities: Ember.computed('page', 'savedOpportunities.[]', function(){
     let page = this.get('page');
     let itemsPerPage = this.get('itemsPerPage');
-    let opportunities = this.get('opportunities');
+    let opportunities = this.get('savedOpportunities').filter((opportunity) => !opportunity.get('isNew'));
 
     let start = (page - 1) * itemsPerPage;
     let end = start + itemsPerPage;

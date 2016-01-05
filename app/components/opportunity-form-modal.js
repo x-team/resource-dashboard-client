@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   showModal: false,
   isEdit: false,
   actions: {
+
     createModal() {
       let opportunity = this.get('store').createRecord('opportunity');
       this.setProperties({
@@ -13,6 +14,7 @@ export default Ember.Component.extend({
         showModal: true
       });
     },
+
     editModal(opportunity) {
       this.setProperties({
         opportunity,
@@ -20,6 +22,7 @@ export default Ember.Component.extend({
         showModal: true
       });
     },
+
     closeModal() {
       let opportunity = this.get('opportunity');
       if(this.get('isEdit')) {
@@ -30,14 +33,12 @@ export default Ember.Component.extend({
       }
       this.set('showModal', false);
     },
+
     save() {
       let opportunity = this.get('opportunity');
       let isEdit = this.get('isEdit');
 
-      opportunity.save().then((opportunity)=>{
-        if(!isEdit) {
-          this.get('onadd')(opportunity);
-        }
+      opportunity.save().then(()=>{
         this.set('showModal', false);
       }, ()=>{
         if(isEdit) {
@@ -50,6 +51,7 @@ export default Ember.Component.extend({
       });
       return false;
     },
+
     createSkill(dropdown, e) {
       if(e.keyCode !== 13) {return;}
       let newSkill = e.target.value;
