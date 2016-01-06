@@ -9,8 +9,7 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
     controller.setProperties({
-      opportunities: model.opportunities,
-      opportunitiesCount: model.opportunities.get('length')
+      opportunities: model.opportunities
     });
   }
 });

@@ -1,13 +1,24 @@
 <h3 class="heading-main">Opportunities</h3>
-
-<ul class="list-two-columns">
-  {{#each pagedOpportunities as |opportunity|}}
-    {{opportunity-list-item model=opportunity}}
-  {{/each}}
-</ul>
+{{#opportunity-form-modal allSkills=allSkills as |createModal editModal|}}
+  <a onclick={{action createModal}} class="btn btn-success" data-test="opportunity-create-btn">Create</a>
+  <ul class="list-two-columns">
+    {{#each pagedOpportunities as |opportunity|}}
+      {{opportunity-list-item model=opportunity editAction=(action editModal opportunity) deleteAction=(action 'showDeleteOpportunityModal' opportunity)}}
+    {{/each}}
+  </ul>
+{{/opportunity-form-modal }}
 
 {{pagination-bar
   page=page
-  totalItemsCount=opportunitiesCount
+  totalItemsCount=opportunities.length
   onSelect=(action 'selectPage')
 }}
+
+{{#if showDeleteModal}}
+  {{#modal-dialog targetAttachment="center"
+                  translucentOverlay=true}}
+    <p>Are you sure you want to delete <b>{{opportunityToDelete.name}}</b></p>
+    <button onclick={{action 'deleteOpportunity' opportunityToDelete}} class="btn btn-active">Delete</button>
+    <button onclick={{action 'closeDeleteOpportunityModal'}} class="btn btn-danger">Cancel</button>
+  {{/modal-dialog}}
+{{/if}}

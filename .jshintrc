@@ -3,6 +3,7 @@
     "document",
     "window",
     "-Promise",
+    "Promise",
     "_"
   ],
   "browser": true,

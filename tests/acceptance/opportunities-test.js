@@ -32,7 +32,7 @@ test('visiting /opportunities', function(assert) {
 });
 
 test('Pagination', function(assert) {
-  let paginationElement = '[data-test=pagination]';
+  const paginationElement = '[data-test=pagination]';
 
   visit('/opportunities');
   click(`${paginationElement} [data-test=2] a`);
@@ -68,5 +68,25 @@ test('Pagination', function(assert) {
       find(`${paginationElement} .active[data-test=2]`).length,
       'Clicking next page marks the Second page as active'
     );
+  });
+});
+
+test('Create', function(assert) {
+  const modalEl = '[data-test=opportunity-form-modal]';
+  visit('/opportunities');
+  click('[data-test=opportunity-create-btn]');
+  andThen(()=> {
+    assert.ok(
+      find(modalEl).length,
+      'Modal is shown when clicking create'
+    );
+
+    click('[data-test=opportunity-cancel]');
+    andThen(()=> {
+      assert.ok(
+        find(modalEl).length === 0,
+        'Modal is hidden when clicking cancel create'
+      );
+    });
   });
 });
