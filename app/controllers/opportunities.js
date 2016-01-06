@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   queryParams: ['page'],
   page: 1,
   itemsPerPage: 10,
-  pagedOpportunities: Ember.computed('page', 'opportunities.[]', function(){
+  pagedOpportunities: Ember.computed('page', 'opportunities.@each.isNew', function(){
     let page = this.get('page');
     let itemsPerPage = this.get('itemsPerPage');
     let opportunities = this.get('opportunities').filter((opportunity) => !opportunity.get('isNew'));
