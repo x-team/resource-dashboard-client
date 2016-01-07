@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    'ember-cli-mirage': {
+      enabled: false
+    },
     contentSecurityPolicy: {
       'style-src': "'self' 'unsafe-inline'"
     },
@@ -43,6 +46,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV['ember-cli-mirage'].enabled = true;
   }
 
   if (environment === 'production') {
