@@ -1,7 +1,9 @@
 import Ember from 'ember';
+import ErrorMessageDisplay from '../mixins/error-messages-display';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(ErrorMessageDisplay, {
   store: Ember.inject.service('store'),
+  notify: Ember.inject.service('notify'),
   showModal: false,
   actions: {
 
@@ -51,15 +53,16 @@ export default Ember.Component.extend({
 
       opportunityToSave.save().then(()=>{
         this.send('closeModal');
-      }, ()=>{
+      }, (error)=>{
+        this.showErrors(error);
         if(isEdit) {
           opportunityToSave.rollbackAttributes();
         }
         else {
           opportunityToSave.destroyRecord();
         }
-        this.send('closeModal');
       });
+
       return false;
     },
 
