@@ -7,6 +7,9 @@ module.exports = function(defaults) {
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
   app.import('bower_components/lodash/lodash.js');
 
+  app.import('bower_components/toastr/toastr.css');
+  app.import('bower_components/toastr/toastr.js');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

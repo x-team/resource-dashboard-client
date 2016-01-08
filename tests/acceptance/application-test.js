@@ -1,7 +1,12 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'resource-dashboard-client/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | Application');
+moduleForAcceptance('Acceptance | Application', {
+  beforeEach: function() {
+    server.createList('developer', 20);
+    server.createList('opportunity', 20);
+  }
+});
 
 test('visiting /', (assert) => {
   visit('/');

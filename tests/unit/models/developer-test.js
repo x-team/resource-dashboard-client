@@ -2,7 +2,6 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('developer', 'Unit | Model | developer', {
   // Specify the other units that are required for this test.
-  needs: ['model:skill']
 });
 
 test('it exists', function(assert) {

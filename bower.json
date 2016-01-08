@@ -16,6 +16,12 @@
     "lodash": "~3.10.1",
     "pikaday": "~1.4.0",
     "moment": ">= 2.8.0",
-    "moment-timezone": ">= 0.1.0"
+    "moment-timezone": ">= 0.1.0",
+    "toastr": "~2.1.2",
+    "pretender": "~0.10.1",
+    "Faker": "~3.0.0"
+  },
+  "resolutions": {
+    "lodash": "~3.10.1"
   }
 }
