@@ -6,8 +6,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('developers');
-  this.route('opportunities');
+  this.route('authenticated', { path: '' }, function() {
+    this.route('dashboard', {resetNamespace: true, path: ''});
+    this.route('developers', {resetNamespace: true});
+    this.route('opportunities', {resetNamespace: true});
+  });
   this.route('login');
 });
 

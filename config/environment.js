@@ -15,6 +15,20 @@ module.exports = function(environment) {
     moment: {
       outputFormat: 'L'
     },
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:token'
+    },
+    'simple-auth-token': {
+      serverTokenEndpoint: '/api/user/getToken'
+    },
+    torii: {
+      providers: {
+        'google-oauth2-bearer': {
+          redirectUrl: '/'
+        }
+
+      }
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
