@@ -15,18 +15,19 @@ module.exports = function(environment) {
     moment: {
       outputFormat: 'L'
     },
-    'simple-auth': {
-      authorizer: 'simple-auth-authorizer:token'
+    'ember-simple-auth': {
+      authorizer: 'authorizer:token',
+      routeAfterAuthentication: 'dashboard'
     },
-    'simple-auth-token': {
+    'ember-simple-auth-token': {
       serverTokenEndpoint: '/api/user/getToken'
     },
     torii: {
       providers: {
         'google-oauth2-bearer': {
-          redirectUrl: '/'
+          apiKey: process.env.GOOGLE_API_KEY,
+          redirectUri: 'http://localhost:4200'
         }
-
       }
     },
     EmberENV: {
