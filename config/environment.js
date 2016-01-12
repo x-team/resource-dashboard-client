@@ -16,7 +16,6 @@ module.exports = function(environment) {
       outputFormat: 'L'
     },
     'ember-simple-auth': {
-      authorizer: 'authorizer:token',
       routeAfterAuthentication: 'dashboard'
     },
     'ember-simple-auth-token': {

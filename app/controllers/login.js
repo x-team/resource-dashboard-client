@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   session: Ember.inject.service(),
   torii: Ember.inject.service(),
+  notify: Ember.inject.service(),
   actions: {
     login: function() {
 
@@ -14,10 +15,10 @@ export default Ember.Controller.extend({
 
         session
           .authenticate('authenticator:token', { password: googleToken } )
-          .then(function(){
+          .then(() => {
             console.log('custom token authentication successful!');
-          }, function (error) {
-            console.log('custom token authentication failed!', error);
+          }, (error) => {
+            this.get('notify').error(error.error);
           });
       }, (error) => {
         console.error(`Google auth failed: ${error.message}`);
