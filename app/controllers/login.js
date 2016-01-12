@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
         console.log('Google authentication sucessful');
 
         session
-          .authenticate('authenticator:jwt', { password: googleToken} )
+          .authenticate('authenticator:token', { password: googleToken } )
           .then(function(){
             console.log('custom token authentication successful!');
           }, function (error) {

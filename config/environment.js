@@ -20,7 +20,8 @@ module.exports = function(environment) {
       routeAfterAuthentication: 'dashboard'
     },
     'ember-simple-auth-token': {
-      serverTokenEndpoint: '/api/user/getToken'
+      serverTokenEndpoint: '/api/user/getToken',
+      identificationField: 'email'
     },
     torii: {
       providers: {
