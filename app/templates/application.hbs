@@ -11,12 +11,12 @@
           <li>{{#link-to "developers" (query-params page=1) data-test="main-header-navigation-developers"}}Developers{{/link-to}}</li>
           <li>{{#link-to "opportunities" (query-params page=1) data-test="main-header-navigation-opportunities"}}Opportunities{{/link-to}}</li>
         </ul>
-        <div onclick={{action 'invalidateSession'}} class="btn navbar-btn navbar-right login-btn">Logout</div>
+        <div onclick={{action 'logout'}} class="btn navbar-btn navbar-right login-btn">Logout</div>
         <div class="navbar-right navbar-text">
           {{session.data.authenticated.email}}
         </div>
       {{else}}
-        {{#link-to "login" class="btn navbar-btn navbar-right login-btn" data-test="main-header-login"}}Login{{/link-to}}
+        <a class="btn navbar-btn navbar-right login-btn" data-test="main-header-login" onclick={{action 'login'}}>Login</a>
       {{/if}}
 
     </div>
