@@ -1,8 +1,8 @@
-<h3 class="heading-main">Opportunities</h3>
-<a onclick={{action 'showCreateModal'}} class="btn btn-success" data-test="opportunity-create-btn">Create</a>
+<h3 class="heading-main">Users</h3>
+<a onclick={{action 'showCreateModal'}} class="btn btn-success" data-test="user-create-btn">Create</a>
 <div class="row">
   <div class="col-lg-6">
-    <table class="table table-striped mtl">
+    <table class="table table-striped mtl" data-test="users-table">
       <thead>
         <th>Name</th>
         <th>Email</th>
@@ -12,12 +12,12 @@
         {{#each users as |user|}}
           <tr>
             <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
+            <td data-test="user-field-email">{{user.email}}</td>
             <td>
               {{#if user.isCurrentUser}}
                 Logged In User
               {{else}}
-                <a onclick={{action 'showDeleteModal' user}} class="btn btn-danger">Delete</a>
+                <a onclick={{action 'showDeleteModal' user}} class="btn btn-danger" data-test="user-delete-btn">Delete</a>
               {{/if}}
             </td>
           </tr>
@@ -30,9 +30,11 @@
 {{#if showDeleteModal}}
   {{#modal-dialog targetAttachment="center"
                   translucentOverlay=true}}
-    <p>Are you sure you want to delete <b>{{userToDelete.email}}</b></p>
-    <button onclick={{action 'deleteUser' userToDelete}} class="btn btn-active">Delete</button>
-    <button onclick={{action 'hideDeleteModal'}} class="btn btn-danger">Cancel</button>
+    <div data-test="user-delete-modal">
+      <p>Are you sure you want to delete <b>{{userToDelete.email}}</b></p>
+      <button onclick={{action 'deleteUser' userToDelete}} class="btn btn-active">Delete</button>
+      <button onclick={{action 'hideDeleteModal'}} class="btn btn-danger">Cancel</button>
+    </div>
   {{/modal-dialog}}
 {{/if}}
 
@@ -40,16 +42,18 @@
 {{#if showCreateModal}}
   {{#modal-dialog targetAttachment="center"
                   translucentOverlay=true}}
-    <h2>Creating a new user</h2>
-    <div class="form-group">
-      <label>Name</label>
-      {{input class="form-control" value=userToCreate.name}}
+    <div data-test="user-create-modal">
+      <h2>Creating a new user</h2>
+      <div class="form-group">
+        <label>Name</label>
+        {{input class="form-control" value=userToCreate.name}}
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        {{input class="form-control" type="email" value=userToCreate.email}}
+      </div>
+      <button onclick={{action 'createUser'}} class="btn btn-active">Create</button>
+      <button onclick={{action 'hideCreateModal'}} class="btn btn-danger" data-test="user-create-cancel">Cancel</button>
     </div>
-    <div class="form-group">
-      <label>Email</label>
-      {{input class="form-control" type="email" value=userToCreate.email}}
-    </div>
-    <button onclick={{action 'createUser'}} class="btn btn-active">Create</button>
-    <button onclick={{action 'hideCreateModal'}} class="btn btn-danger">Cancel</button>
   {{/modal-dialog}}
 {{/if}}
