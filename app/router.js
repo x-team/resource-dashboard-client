@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('dashboard', {resetNamespace: true, path: ''});
     this.route('developers', {resetNamespace: true});
     this.route('opportunities', {resetNamespace: true});
+    this.route('users', {resetNamespace: true});
   });
   this.route('login');
 });
