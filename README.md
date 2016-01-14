@@ -20,6 +20,12 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 
+* create `.env` and add the following
+```
+//For login
+GOOGLE_API_KEY=YOUR_GOOGLE_API_CLIENT_ID
+```
+
 ## Running / Development
 
 * `ember server`

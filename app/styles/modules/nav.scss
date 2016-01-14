@@ -8,6 +8,7 @@
 
   .login-btn {
     margin-right:0;
+    margin-left: 5px;
   }
 }
 
@@ -31,4 +32,8 @@
   font-size: 20px;
   letter-spacing: 2px;
   padding: 15px 30px;
+}
+
+.navbar-text {
+  color: $navbarTextColor;
 }

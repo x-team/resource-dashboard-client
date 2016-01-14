@@ -19,7 +19,8 @@
     "moment-timezone": ">= 0.1.0",
     "toastr": "~2.1.2",
     "pretender": "~0.10.1",
-    "Faker": "~3.0.0"
+    "Faker": "~3.0.0",
+    "ember-simple-auth": "0.8.0"
   },
   "resolutions": {
     "lodash": "~3.10.1"

@@ -98,4 +98,16 @@ export function testConfig() {
       })
     };
   });
+
+  this.get('/api/users', function(db) {
+    return {
+      data: db.users.map(attrs => {
+        return {
+          type: 'user',
+          id: attrs.id,
+          attributes: attrs
+        };
+      })
+    };
+  });
 }

@@ -1,8 +1,12 @@
 import { test } from 'qunit';
+import { invalidateSession } from 'resource-dashboard-client/tests/helpers/ember-simple-auth';
 import moduleForAcceptance from 'resource-dashboard-client/tests/helpers/module-for-acceptance';
 
+let application = null;
 moduleForAcceptance('Acceptance | Application', {
   beforeEach: function() {
+
+    application = this.application;
     server.createList('developer', 20);
     server.createList('opportunity', 20);
   }
@@ -26,27 +30,13 @@ test('visiting /', (assert) => {
       'Footer navigation is in place'
     );
     assert.ok(
-      find('[data-test=main-header-login]').length,
-      'Login button is in place'
+      find('[data-test=main-header-logout]').length,
+      'Logout button is in place'
     );
     assert.equal(
       find('[data-test=summary-list]').length,
       3,
       '3 summaries lists are in place'
-    );
-  });
-});
-
-test('Header login button', (assert) => {
-  visit('/');
-
-  click(`[data-test=main-header-login]`);
-
-  andThen(() => {
-    assert.equal(
-      currentURL(),
-      '/login',
-      'Clicking it redirects to /login page'
     );
   });
 });
@@ -57,7 +47,7 @@ test('Header navigation', (assert) => {
   andThen(() => {
     assert.equal(
       find('[data-test=main-header-navigation] a').length,
-      3,
+      4,
       'Contains 3 link'
     );
     assert.ok(
@@ -71,6 +61,10 @@ test('Header navigation', (assert) => {
     assert.ok(
       find('[data-test=main-header-navigation-opportunities]').length,
       'Contains opportunities link'
+    );
+    assert.ok(
+      find('[data-test=main-header-navigation-users]').length,
+      'Contains users link'
     );
   });
 
@@ -101,6 +95,16 @@ test('Header navigation', (assert) => {
       currentURL(),
       '/opportunities',
       'Clicking dashboard link redirects to /opportunities page'
+    );
+  });
+
+  click(`[data-test=main-header-navigation-users]`);
+
+  andThen(() => {
+    assert.equal(
+      currentURL(),
+      '/users',
+      'Clicking users link redirects to /users page'
     );
   });
 });
@@ -243,6 +247,30 @@ test('Available Soon Developers summary list', (assert) => {
       currentURL(),
       '/developers',
       'Clicking more link redirects to /developers page'
+    );
+  });
+});
+
+test('Navbar empty when logged out', (assert)=> {
+  invalidateSession(application);
+  visit('/');
+  andThen(()=> {
+    assert.equal(
+      find('[data-test=main-header-navigation] a').length,
+      0,
+      'Navbar contains no links'
+    );
+  });
+});
+
+test('Can\'t access developers when logged out', (assert)=> {
+  invalidateSession(application);
+  visit('/developers');
+  andThen(()=> {
+    assert.equal(
+      currentURL(),
+      '/login',
+      'When accessing /developers redirected back to login when logged out'
     );
   });
 });
