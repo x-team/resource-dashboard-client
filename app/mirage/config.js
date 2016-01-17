@@ -87,6 +87,15 @@ export function testConfig() {
     };
   });
 
+  this.get('/api/dashboard/graph', function() {
+    return {
+      months: [],
+      available: [],
+      booked: [],
+      needed: []
+    };
+  });
+
   this.get('/api/opportunities', function(db) {
     return {
       data: db.opportunities.map(attrs => {

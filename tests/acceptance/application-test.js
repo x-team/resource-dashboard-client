@@ -38,6 +38,11 @@ test('visiting /', (assert) => {
       3,
       '3 summaries lists are in place'
     );
+    assert.equal(
+      find('.summary-graph canvas').length,
+      1,
+      'summary graph is shown'
+    );
   });
 });
 

@@ -3,9 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   newOpportunitiesSortFields: ['createdAt:desc'],
   newDevelopersSortFields: ['createdAt:desc'],
-  chartData: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [
+  chartData: Ember.computed('graph', function() {
+    let graph = this.get('graph');
+    return {
+      labels: graph.get('months'),
+      datasets: [
         {
             label: "Available",
             fillColor: "rgba(220,220,220,0.2)",
@@ -14,7 +16,7 @@ export default Ember.Controller.extend({
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
+            data: graph.get('available')
         },
         {
             label: "Booked",
@@ -24,7 +26,7 @@ export default Ember.Controller.extend({
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
+            data: graph.get('booked')
         },
         {
             label: "Needed",
@@ -34,10 +36,12 @@ export default Ember.Controller.extend({
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [40, 23, 30, 56, 75, 52, 96]
+            data: graph.get('needed')
         }
-    ]
-  },
+
+      ]
+    };
+  }),
 
   chartOptions: {
     bezierCurve: false,
