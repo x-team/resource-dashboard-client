@@ -13,7 +13,11 @@
 </div>
 
 <div class="developers-content">
-  {{developers-list developers=pagedDevelopers}}
+  <ul class="list-two-columns">
+    {{#each developers as |developer|}}
+      {{developers-list-item model=developer}}
+    {{/each}}
+  </ul>
 </div>
 
 {{pagination-bar
