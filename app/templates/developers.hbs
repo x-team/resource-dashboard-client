@@ -14,7 +14,7 @@
 
 <div class="developers-content">
   <ul class="list-two-columns">
-    {{#each developers as |developer|}}
+    {{#each pagedDevelopers as |developer|}}
       {{developers-list-item model=developer editAction=(action 'showEditModal')}}
     {{/each}}
   </ul>

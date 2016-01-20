@@ -11,7 +11,16 @@ export default Ember.Controller.extend({
 
     let start = (page - 1) * itemsPerPage;
     let end = start + itemsPerPage;
-    return opportunities.slice(start, end);
+    let itemsShown = opportunities.slice(start, end);
+
+    //force redirect to first page if current page has no items
+    if(itemsShown.length === 0) {
+      Ember.run.later(() => {
+        this.set('page', 1);
+      });
+    }
+
+    return itemsShown;
   }),
 
   allSkills: Ember.computed('opportunities.[]', function() {
