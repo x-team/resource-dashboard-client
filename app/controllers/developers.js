@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import moment from 'moment';
+import ErrorMessageDisplay from '../mixins/error-messages-display';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(ErrorMessageDisplay, {
   queryParams: ['page','address','timezone','rate','nextAvailable', 'skills'],
   skills: [],
   page: 1,
@@ -89,11 +90,50 @@ export default Ember.Controller.extend({
     selectPage(page) {
       this.transitionToRoute({queryParams: {page}});
     },
+
     filterDevelopers(field, value) {
       this.setProperties({
         [field]: value,
         page: 1
       });
+    },
+
+    showEditModal(developer) {
+      let editedDeveloper = Ember.Object.create({
+        availableDate: developer.get('availableDate'),
+        rate: developer.get('rate')
+      });
+
+      this.setProperties({
+        developerToSave: developer,
+        editedDeveloper: editedDeveloper,
+        showEditModal: true
+      });
+    },
+
+    closeEditModal() {
+      this.setProperties({
+        editedDeveloper: null,
+        developerToSave: null,
+        showEditModal: false
+      });
+    },
+
+    saveEditModal(developer) {
+      let developerToSave = this.get('developerToSave');
+
+      developerToSave.setProperties({
+        availableDate: developer.get('availableDate'),
+        rate: developer.get('rate')
+      });
+
+      developerToSave.save().then(()=> {
+        this.send('closeEditModal');
+      }, (error)=> {
+        this.showErrors(error);
+        developerToSave.rollbackAttributes();
+      });
+
     }
   }
 
