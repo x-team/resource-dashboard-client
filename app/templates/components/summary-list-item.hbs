@@ -5,12 +5,12 @@
   <div>
     {{#if isOpportunityType}}
       <time>
-        {{model.dateFrom}}
-        {{#if model.dateTo}}- {{model.dateTo}}{{/if}}
+        {{moment-format model.dateFrom allowEmpty=true}}
+        {{#if model.dateTo}}- {{moment-format model.dateTo allowEmpty=true}}{{/if}}
       </time>
     {{/if}}
     {{#if isDeveloperType}}
-      <time>{{model.createdAt}}</time>
+      <time>{{moment-format model.createdAt allowEmpty=true}}</time>
     {{/if}}
   </div>
 </div>
