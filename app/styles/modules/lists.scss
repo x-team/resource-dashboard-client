@@ -53,3 +53,24 @@
     font-weight: bold;
   }
 }
+
+
+/* Chart legend list */
+
+.line-legend {
+  list-style: none;
+  margin: 20px auto;
+  width: 1200px;
+  display: flex;
+  li {
+    flex: 1;
+    span {
+      height: 5px;
+      width: 15px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+
+    }
+  }
+}
