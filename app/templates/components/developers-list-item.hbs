@@ -12,11 +12,11 @@
       <ul class="list-plain">
         <li>
           <strong>Skills:</strong>
-     	  <span data-test="developer-skills">{{array-to-string model.skills}}</span>
+          <span data-test="developer-skills">{{array-to-string model.skills}}</span>
         </li>
         <li>
           <strong>Available:</strong>
-          <span data-test="developer-available">{{if model.available 'Yes' 'No'}}</span>
+          <span data-test="developer-available">{{if model.isAvailable 'Yes' 'No'}}</span>
         </li>
         <li>
           <strong>Rate:</strong>
@@ -31,6 +31,9 @@
           <span data-test="developer-timezone">{{model.timezone}}</span>
         </li>
       </ul>
+      <div>
+        <a onclick={{action editAction model}} class="btn btn-default btn-xs">Edit</a>
+      </div>
     </div>
   </div>
 </div>

@@ -13,8 +13,37 @@
 </div>
 
 <div class="developers-content">
-  {{developers-list developers=pagedDevelopers}}
+  <ul class="list-two-columns">
+    {{#each pagedDevelopers as |developer|}}
+      {{developers-list-item model=developer editAction=(action 'showEditModal')}}
+    {{/each}}
+  </ul>
 </div>
+
+{{#if showEditModal}}
+  {{#modal-dialog targetAttachment="center"
+                  translucentOverlay=true}}
+    <div data-test="developer-edit-modal">
+      <h2>Editing {{developerToSave.name}}</h2>
+
+      <div class="form-group" data-test="developer-availableDate" >
+        <label>Rate</label>
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          {{input class="form-control" value=editedDeveloper.rate class="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Available Date</label>
+        {{pikaday-input value=editedDeveloper.availableDate format="MM/DD/YYYY" class="form-control"}}
+      </div>
+
+      <button onclick={{action 'saveEditModal' editedDeveloper}} class="btn btn-active">Save</button>
+      <button onclick={{action 'closeEditModal'}} class="btn btn-danger">Cancel</button>
+    </div>
+  {{/modal-dialog}}
+{{/if}}
 
 {{pagination-bar
   page=page
