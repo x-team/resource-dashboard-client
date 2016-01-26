@@ -2,6 +2,9 @@
 
 module.exports = function(environment) {
   var ENV = {
+    api: {
+      host: 'http://localhost:8000'
+    },
     modulePrefix: 'resource-dashboard-client',
     environment: environment,
     baseURL: '/',
@@ -65,7 +68,9 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.api.host = 'https://resource-dashboard-server.herokuapp.com',
+    ENV['ember-simple-auth-token'].serverTokenEndpoint = 'https://resource-dashboard-server.herokuapp.com/api/users/getToken';
+    ENV.torii.providers['google-oauth2-bearer'].redirectUri = 'https://resource-dashboard-client.herokuapp.com';
   }
 
   return ENV;

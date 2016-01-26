@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   session: Ember.inject.service(),
@@ -19,7 +20,7 @@ export default Ember.Route.extend({
   getGraphData() {
     let token = this.get('session.data.authenticated.token');
     return Ember.$.ajax({
-      url: '/api/dashboard/graph',
+      url: `${ENV.api.host}/api/dashboard/graph`,
       type: 'GET',
       headers: {
         Authorization: `Bearer ${token}`
