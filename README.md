@@ -47,7 +47,19 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+- Create Google oAuth token following https://developers.google.com/identity/protocols/OAuth2 (it's called Client ID and has format `<random-token>.apps.googleusercontent.com`).
+- Set correct `config/environment.js` production variables
+- Install [Heroku Toolbelt](https://toolbelt.heroku.com/) and log in to your account.
+
+Follow steps below to deploy:
+```
+$ heroku git:remote -a <heroku-app-name>
+$ heroku config:set GOOGLE_API_KEY=<your-token>
+$ heroku buildpacks:set https://github.com/tonycoco/heroku-buildpack-ember-cli.git
+$ git push heroku master
+$ heroku ps:scale web=1
+$ heroku open
+```
 
 ## Further Reading / Useful Links
 
